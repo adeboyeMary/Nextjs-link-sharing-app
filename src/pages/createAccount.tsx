@@ -16,23 +16,26 @@ export default function CreateAccount () {
         text-sm md:text-base lg:text-sm ">
           <h1 className="font-bold text-3xl mb-2">Create Account</h1>
           <p className="mb-6">Lets get you started sharing your links!</p>
-          <form className="flex flex-col text-[#737373] ">
+          <form className="flex flex-col text-[#737373] gap-1 ">
             <>
               <label>Email address</label>
-              <input type="text"  className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] 
-              rounded-lg text-xs" placeholder="e.g alex@email.com" required/>
+              <input type="text"  className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] pl-2
+              rounded-lg text-xs focus:border-[1px] focus:border-[#633BFF] focus:shadow-lg focus:outline-none" 
+              placeholder="e.g alex@email.com" required/>
             </>
             
             <>
               <label className="mt-3">Create Password</label>
-              <input type="text"  className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] 
-              rounded-lg text-xs" placeholder="At least 8 characters" required/>
+              <input type="text"  className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] pl-2
+              rounded-lg text-xs focus:border-[1px] focus:border-[#633BFF] focus:shadow-lg focus:outline-none" 
+              placeholder="At least 8 characters" required/>
             </>
 
             <>
               <label className="mt-3">Confirm Password</label>
-              <input type="text"  className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] 
-              rounded-lg text-xs" placeholder="At least 8 characters" required/>
+              <input type="text"  className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] pl-2
+              rounded-lg text-xs focus:border-[1px] focus:border-[#633BFF] focus:shadow-lg focus:outline-none" 
+              placeholder="At least 8 characters" required/>
             </>
             <p className="mt-4">Password must contain at least 8 characters</p>
             <button className="bg-[#633BFF] text-white my-4 py-[7px] rounded-lg ">Create new account</button>
