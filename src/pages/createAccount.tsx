@@ -13,7 +13,7 @@ export default function CreateAccount () {
         </div>
 
         <div className="bg-white md:w-[60%] lg:w-[35%] m-auto p-8 md:rounded-xl lg:rounded-xl 
-        text-base md:text-base lg:text-sm ">
+        ">
           <h1 className="font-bold text-3xl mb-2">Create Account</h1>
           <p className="mb-6">Lets get you started sharing your links!</p>
           <form className="flex flex-col text-[#737373] gap-1 ">
