@@ -19,7 +19,8 @@ export default function CreateAccount () {
           <form className="flex flex-col text-[#737373] gap-1 ">
             <>
               <label>Email address</label>
-              <input type="text"  className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] pl-2
+              <input type="text"  
+              className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] pl-2
               rounded-lg text-xs focus:border-[1px] focus:border-[#633BFF] focus:shadow-lg focus:outline-none
               text-[16px] sm:text-[16px] md:text-sm lg:text-sm" 
               placeholder="e.g alex@email.com" required/>
