@@ -2,7 +2,7 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import devlink from "../asset/devlink.svg";
-import email from "../asset/email.svg";
+// import email from "../asset/email.svg";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,19 +22,21 @@ export default function Home() {
           <form className="flex flex-col text-[#737373] gap-2 ">
             <>
               <label>Email address</label>
-              <input className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] rounded-lg text-sm pl-2
+              <input className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] rounded-lg text-[16px] 
+              pl-2 sm:text-[16px] md:text-sm lg:text-sm
               focus:border-[1px] focus:border-[#633BFF] focus:shadow-lg focus:outline-none " 
               placeholder="e.g alex@email.com"  required />
             </>
             
             <>
               <label className="mt-3">Password</label>
-              <input className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] rounded-lg text-sm pl-2
-              focus:border-[1px] focus:border-[#633BFF] focus:shadow-lg focus:outline-none"
+              <input className="w-[100%] py-[8px] lg:py-[7px] border-[1px] border-[#D9D9D9] rounded-lg text-[16px] 
+              pl-2 sm:text-[16px] md:text-sm lg:text-sm
+              focus:border-[1px] focus:border-[#633BFF] focus:shadow-lg focus:outline-none "
               placeholder="Enter your password" required />
             </>
             <Link href="/homePage">
-              <button className="bg-[#633BFF] text-white my-4 py-[7px] rounded-lg ">Login</button>
+              <button className="bg-[#633BFF] text-white my-4 py-[8px] w-[100%] rounded-lg ">Login</button>
             </Link>
           </form>
             <p className="text-center">Do not have an account? <Link href='/createAccount' className="text-[#633BFF] ">Create account</Link></p>
