@@ -63,7 +63,7 @@ const Login = () => {
                 <input type="email" id="email" name="email" placeholder="e.g alex@email.com"  
                 value={enteredEmail} onChange={emailChangeHandler} 
                 className= {`focus:outline-none ${emailError ? ' w-[48%] md:w-[56.5%] lg:w-[60%] xl:w-[53%]' : 'w-[90%]'}`} />
-                {emailError && <p className="text-red-500 text-sm xl:text-xs">{emailError}</p>}
+                {emailError && <p className="text-red-500 hidden md:block lg:block xl:block text-sm xl:text-xs">{emailError}</p>}
               </div>
             </>
             
@@ -76,7 +76,7 @@ const Login = () => {
                   <input type="password" id="password" name="password"
                     className={` focus:outline-none ${passwordError ? 'w-[41%] md:w-[49%] lg:w-[53%] xl:w-[46%] ' : 'w-[100%]' }`} 
                     onChange={passwordChangeHandler} value={enteredPassword} placeholder="Enter your password"  />
-                    {passwordError && <p className="text-red-500 text-sm xl:text-xs">{passwordError}</p>}
+                    {passwordError && <p className="text-red-500 hidden md:block lg:block xl:block text-sm xl:text-xs">{passwordError}</p>}
               </div>
             </>
               

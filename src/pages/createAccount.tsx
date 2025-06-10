@@ -70,7 +70,7 @@ export default function CreateAccount () {
                 <input type="email" id="email" name="email" placeholder="e.g alex@email.com"  
                 value={enteredEmail} onChange={emailChangeHandler} 
                 className= {`focus:outline-none ${emailError ? 'w-[50%] md:w-[56%] lg:w-[61%] ' : 'w-[90%]'}`} />
-                {emailError && <p className="text-red-500 text-sm">{emailError}</p>}
+                {emailError && <p className="text-red-500 text-sm hidden md:block lg:block xl:block">{emailError}</p>}
               </div>
             </>
             
@@ -83,7 +83,7 @@ export default function CreateAccount () {
                   <input type="password" id="password" name="password"
                     className={` focus:outline-none ${passwordError ? 'w-[43%] md:w-[50%] lg:w-[56%] ' : 'w-[100%]' }`} onChange={passwordChangeHandler}
                     value={enteredPassword} placeholder="At least 8 characters"  />
-                    {passwordError && <p className="text-red-500">{passwordError}</p>}
+                    {passwordError && <p className="text-red-500 hidden md:block lg:block xl:block">{passwordError}</p>}
               </div>
             </>
 
@@ -97,7 +97,7 @@ export default function CreateAccount () {
                     className={` focus:outline-none ${confirmPasswordError ? 'w-[43%] md:w-[50%] lg:w-[56%] ' : 'w-[100%]' }`} 
                     onChange={confirmPasswordChangeHandler}
                     value={enteredConfirmPassword} placeholder="At least 8 characters"  />
-                    {confirmPasswordError && <p className="text-red-500">{confirmPasswordError}</p>}
+                    {confirmPasswordError && <p className="text-red-500 hidden md:block lg:block xl:block">{confirmPasswordError}</p>}
               </div>
             </>
             <p className="mt-6 text-sm">Password must contain at least 8 characters</p>
