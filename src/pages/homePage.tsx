@@ -8,8 +8,8 @@ export default function HomePage () {
     return (
         <div className="flex flex-col text-sm gap-4 text-[#333333]  ">
             <div className="w-[92%] lg:flex lg:flex-row lg:w-[94%] m-auto lg:gap-4 bg-white rounded-lg pb-8 lg:pb-0 lg:bg-transparent ">
-                {/* bg-white rounded-lg pb-6 lg:bg-transparent */}
-                <div className="hidden lg:block lg:w-[40%] lg:h-[45%] lg:py-[2.6rem] lg:bg-white rounded-lg ">
+                <div className="hidden lg:block lg:w-[40%] lg:py-[2.6rem] lg:bg-white rounded-lg ">
+                {/* lg:h-[100%] xl:h-[45%] */}
                     <Image src={phone} alt="phone" width={500} height={300} className="w-[200px] m-auto " />
                 </div>
 
@@ -37,7 +37,7 @@ export default function HomePage () {
                     <div className="hidden lg:block"><Button /></div>                
                 </div>
                 <hr className="mt- mb-5 lg:hidden" />
-                <div className="lg:hidden w-[89%] m-auto "><Button /></div>
+                <div className="lg:hidden md:block w-[89%] md:w-[10%] md:float-end md:mr-12 m-auto "><Button /></div>
             </div>
         </div>
     )
