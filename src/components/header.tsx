@@ -47,7 +47,7 @@ const Header = () => {
                 <Image src={eye} alt="eye" width={30} height={30} className=" " />
                 <span>Preview</span>
             </Link>
-            <Link href="" className="block lg:hidden border-[#633BFF] border-[1px] h-[47px] py-2 px-3 rounded-lg mt-1.5 ">
+            <Link href="/previewPage" className="block lg:hidden border-[#633BFF] border-[1px] h-[47px] py-2 px-3 rounded-lg mt-1.5 ">
                 <Image src={eye} alt="eye" width={23} height={23} className=" " />
             </Link>            
         </div>

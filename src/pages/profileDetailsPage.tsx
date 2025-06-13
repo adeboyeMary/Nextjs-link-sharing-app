@@ -5,7 +5,7 @@ import Button from "@/components/button";
 
 const profileDetailsPage = () => {
     return (
-        <div className="bg-white w-[92%] m-auto rounded-lg text-[#333333] ">
+        <div className="bg-white w-[92%] m-auto rounded-lg text-[#333333] pb-0.5 ">
             <div className="p-6">
                 <h1 className="text-3xl font-bold  ">Profile Details</h1>
                 <p className="text-base mt-4 mb-7">Add your details to create a personal touch to your profile.</p>
@@ -22,15 +22,15 @@ const profileDetailsPage = () => {
                 <form className="flex flex-col gap-2">
                     <>
                     <label>First name*</label>
-                    <input name="" id="" type="" className="py-4 border border-[#737373] rounded-lg outline-none " />
+                    <input name="" id="" type="" className="py-4 border border-[#737373] rounded-lg outline-none pl-3 " />
                     </>
                     <>
                     <label>Last name*</label>
-                    <input name="" id="" type="" className="py-4 border border-[#737373] rounded-lg outline-none " />
+                    <input name="" id="" type="" className="py-4 border border-[#737373] rounded-lg outline-none pl-3 " />
                     </>
                     <>
                     <label>Email</label>
-                    <input name="" id="" type="" className="py-4 border border-[#737373] rounded-lg outline-none " />
+                    <input name="" id="" type="" className="py-4 border border-[#737373] rounded-lg outline-none pl-3 " />
                     </>
                 </form>
             </div>
