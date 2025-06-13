@@ -16,7 +16,7 @@ const Header = () => {
         <div className="flex flex-row justify-between bg-white w-[100%] m-auto py-3 px-4 mb-4">
             <div className="flex flex-row py-2.5 px-3 md:flex md:flex-row md:gap-1 ">
                 <Image src={devlink} alt="devlink" width={30} height={30} className='' />
-                <p className="lg:block md:block lg:text-3xl font-bold hidden md:pt-1.5 ">devlinks</p>
+                <p className="lg:block md:block lg:text-3xl font-bold hidden md:pt-1.5 lg:pt-0 ">devlinks</p>
             </div>
                     
             <div className="flex flex-row gap-2 py-2">
