@@ -7,7 +7,7 @@ import email from "../asset/email.svg";
 import password from "../asset/password.svg";
 
 const Login = () => {
-    const [enteredEmail, setEnteredEmail] = useState<string>('');
+  const [enteredEmail, setEnteredEmail] = useState<string>('');
   const [enteredPassword, setEnteredPassword] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [passwordError, setPasswordError] = useState<string>('');

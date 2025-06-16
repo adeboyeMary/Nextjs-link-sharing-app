@@ -16,10 +16,10 @@ const Header = () => {
         <div className="flex flex-row justify-between bg-white w-[100%] m-auto py-3 px-4 mb-4">
             <div className="flex flex-row py-2.5 px-3 md:flex md:flex-row md:gap-1 ">
                 <Image src={devlink} alt="devlink" width={30} height={30} className='' />
-                <p className="lg:block md:block lg:text-3xl font-bold hidden md:pt-1.5 lg:pt-0 ">devlinks</p>
+                <p className="lg:block md:block md:text-2xl lg:text-xl font-bold hidden md:pt-1.5 lg:pt ">devlinks</p>
             </div>
                     
-            <div className="flex flex-row gap-2 py-2">
+            <div className="flex flex-row gap-2 py-2 md:text-sm lg:text-sm ">
                 <Link href="/homePage" className={`px-6 py-2.5 transition-colors duration-200 md:gap-1
                 ${pathname === '/homePage' ? 'bg-[#EFEBFF] rounded-lg ' : 'bg-transparent'} md:flex md:flex-row `}>
                     {pathname === '/homePage' ? (
@@ -44,13 +44,8 @@ const Header = () => {
                 </Link>
             </div>
 
-            {/* <Link href="" className="hidden lg:flex items-center gap-2 border border-[#633BFF] px-5 py-2 
-                rounded-md text-[#633BFF] hover:bg-[#EFEBFF] transition">
-                <Image src={eye} alt="eye" width={30} height={30} className=" " />
-                <span>Preview</span>
-            </Link> */}
             <Link href="/previewPage" className=" border-[#633BFF] border-[1px] h-[47px] py-2 px-3 rounded-lg mt-1.5
-            md:px-7 md:h-[43px] md:mt-2 ">
+            md:px-7 md:h-[43px] md:mt-2 md:text-sm lg:text-sm">
                 <Image src={eye} alt="eye" width={23} height={23} className="block md:hidden lg:hidden " />
                 <span className="hidden md:block">Preview</span>
             </Link>            
