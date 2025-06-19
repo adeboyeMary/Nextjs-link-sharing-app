@@ -32,6 +32,8 @@ const Login = () => {
     } 
     if(!isValid) return; 
     
+    setEmailError('');
+    setPasswordError('');
     setEnteredEmail(''); 
     setEnteredPassword(''); 
     window.location.href = '/homePage';
@@ -58,11 +60,11 @@ const Login = () => {
               <label htmlFor="email" className={emailError ? 'text-red-500 ' : 'text-[#333333]' } >Email address</label>
               <div className={`flex flex-row gap-3 w-[100%] py-3.5 lg:py-3.5 rounded-lg text-sm pl-2
                 ${emailError ? 'border-[1px] border-red-500 ' : 'border-[1px] border-[#D9D9D9] '} md:text-sm lg:text-sm 
-                focus-within:shadow-lg focus-within:border-[#633BFF]` }>
+                focus-within:shadow-[0_0_20px_rgba(99,59,255,0.4)] focus-within:border-[#633BFF]` }>
                 <Image src={email} alt="mail" width={20} height={20} className="ml-3" />
                 <input type="email" id="email" name="email" placeholder="e.g alex@email.com"  
                 value={enteredEmail} onChange={emailChangeHandler} 
-                className= {`focus:outline-none ${emailError ? ' w-[48%] md:w-[56.5%] lg:w-[60%] xl:w-[53%]' : 'w-[90%]'}`} />
+                className= {`focus:outline-none bg-transparent ${emailError ? ' w-[48%] md:w-[56.5%] lg:w-[60%] xl:w-[53%]' : 'w-[90%]'}`} />
                 {emailError && <p className="text-red-500 hidden md:block lg:block xl:block text-sm xl:text-xs">{emailError}</p>}
               </div>
             </>
@@ -71,7 +73,7 @@ const Login = () => {
               <label htmlFor="password" className={`mt-5 ${passwordError ? 'text-red-500' : 'text-[#333333]'}`} >Password</label>
               <div className={`flex flex-row w-[100%] py-3.5 lg:py-3.5 gap-3 rounded-lg text-sm pl-2 md:text-sm lg:text-sm focus-within:border-[#633BFF] 
                   ${ passwordError ? 'border-[1px] border-red-500' : 'border-[1px] border-[#D9D9D9]'}
-                  focus-within:shadow-xl`}>
+                  focus-within:shadow-[0_0_20px_rgba(99,59,255,0.4)]`}>
                   <Image src={password} alt="password" width={20} height={20} className="ml-3" />
                   <input type="password" id="password" name="password"
                     className={` focus:outline-none ${passwordError ? 'w-[41%] md:w-[49%] lg:w-[53%] xl:w-[46%] ' : 'w-[100%]' }`} 

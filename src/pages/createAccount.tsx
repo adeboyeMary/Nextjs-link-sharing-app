@@ -65,7 +65,7 @@ export default function CreateAccount () {
               <label htmlFor="email" className="text-[#333333]">Email address</label>
               <div className={`flex flex-row gap-3 w-[100%] py-3.5 lg:py-3.5 rounded-lg text-sm pl-2 
                 ${emailError ? 'border-[1px] border-red-500 ' : 'border-[1px] border-[#D9D9D9] '} md:text-sm lg:text-sm 
-                focus-within:shadow-lg focus-within:border-[#633BFF]` }>
+                focus-within:shadow-[0_0_20px_rgba(99,59,255,0.4)] focus-within:border-[#633BFF]` }>
                 <Image src={email} alt="mail" width={20} height={20} className="ml-3" />
                 <input type="email" id="email" name="email" placeholder="e.g alex@email.com"  
                 value={enteredEmail} onChange={emailChangeHandler} 
@@ -77,7 +77,7 @@ export default function CreateAccount () {
             <>
               <label htmlFor="password" className="mt-3 text-[#333333] ">Create Password</label>
               <div className={`flex flex-row w-[100%] py-3.5 lg:py-3.5 gap-3 rounded-lg text-sm pl-2 md:text-sm lg:text-sm 
-                focus-within:border-[#633BFF] focus-within:shadow-xl
+                focus-within:border-[#633BFF] focus-within:shadow-[0_0_20px_rgba(99,59,255,0.4)]
                   ${ passwordError ? 'border-[1px] border-red-500' : 'border-[1px] border-[#D9D9D9]'}`}>
                   <Image src={password} alt="password" width={20} height={20} className="ml-3" />
                   <input type="password" id="password" name="password"
@@ -90,7 +90,7 @@ export default function CreateAccount () {
             <>
               <label htmlFor="password" className="mt-3 text-[#333333]">Confirm Password</label>
               <div className={`flex flex-row w-[100%] py-3.5 lg:py-3.5 gap-3 rounded-lg text-sm pl-2 md:text-sm lg:text-sm 
-                focus-within:border-[#633BFF] focus-within:shadow-xl
+                focus-within:border-[#633BFF] focus-within:shadow-[0_0_20px_rgba(99,59,255,0.4)]
                   ${ confirmPasswordError ? 'border-[1px] border-red-500' : 'border-[1px] border-[#D9D9D9]'}`}>
                   <Image src={password} alt="password" width={20} height={20} className="ml-3" />
                   <input type="password" id="password" name="password"

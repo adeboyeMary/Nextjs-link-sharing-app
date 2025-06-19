@@ -1,0 +1,14 @@
+export { default as GithubIcon } from "./Github";
+export { default as FaceBookIcon } from "./Fb";
+export { default as FreeCodeCampIcon } from "./FreeCodeCamp";
+export { default as LinkedInIcon } from "./LinkedIn";
+export { default as TwitterIcon } from "./Twitter";
+// export { default as Fb } from "./Fb";
+// export { default as Fb } from "./Fb";
+// export { default as Fb } from "./Fb";
+// export { default as Fb } from "./Fb";
+// export { default as Fb } from "./Fb";
+// export { default as Fb } from "./Fb";
+// export { default as Fb } from "./Fb";
+// export { default as Fb } from "./Fb";
+// export { default as Fb } from "./Fb";

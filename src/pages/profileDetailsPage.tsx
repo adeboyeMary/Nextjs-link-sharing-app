@@ -30,7 +30,7 @@ const ProfileDetailsPage = () => {
     return (
         <div className="flex flex-row bg-white lg:bg-transparent w-[92%] m-auto rounded-lg text-[#333333] pb-0.5 lg:gap-4 ">
             <div className="hidden lg:block lg:w-[40%] lg:pt-20 lg:pb-[2.6rem] lg:bg-white rounded-lg ">
-                <Image src={phone} alt="phone" width={280} height={200} className="w-[200p] m-auto " />
+                <Image src={phone} alt="phone" width={280} height={200} className=" m-auto " />
             </div>
                 
             <div className="bg-white w-[100%] md:w-[100%] lg:w-[60%] rounded-lg">
@@ -55,7 +55,7 @@ const ProfileDetailsPage = () => {
                     <div className="flex flex-col md:flex-row md:justify-between lg:flex-row lg:justify-between">
                         <label className="lg:w-[35%] ">First name*</label>
                         <div className={`flex flex-row py-3 lg:py-2 md:w-[65%] lg:w-[65%] border rounded-lg pl-3 text-sm 
-                        ${error ? 'border-[1px] border-red-500 ' : 'border-[#737373] ' } focus-within:shadow-lg 
+                        ${error ? 'border-[1px] border-red-500 ' : 'border-[#737373] ' } focus-within:shadow-[0_0_20px_rgba(99,59,255,0.3)]
                         focus-within:border-[#633BFF]`}>
                             <input name="firstName" id="firstName" type="text" placeholder="e.g John" value={enteredFirstName}
                                 onChange={(e) => setEnteredFirstName(e.target.value)} 
@@ -68,7 +68,7 @@ const ProfileDetailsPage = () => {
                     <div className="flex flex-col md:flex-row md:justify-between lg:flex-row lg:justify-between">
                         <label className="lg:w-[35%] ">Last name*</label>
                         <div className={`flex flex-row py-3 lg:py-2 md:w-[65%] lg:w-[65%] border rounded-lg pl-3 text-sm 
-                        ${error ? 'border-[1px] border-red-500 ' : 'border-[#737373] ' } focus-within:shadow-lg 
+                        ${error ? 'border-[1px] border-red-500 ' : 'border-[#737373] ' } focus-within:shadow-[0_0_20px_rgba(99,59,255,0.4)] 
                         focus-within:border-[#633BFF] `}>
                             <input name="lName" id="lName" type="text" placeholder="e.g Appleseed" value={enteredLastName}
                                 onChange={(e) => setEnteredLastName(e.target.value)} 
@@ -81,7 +81,7 @@ const ProfileDetailsPage = () => {
                     <div className="flex flex-col md:flex-row md:justify-between lg:flex-row lg:justify-between">
                         <label className="lg:w-[35%] ">Email</label>
                         <div className={`flex flex-row py-3 lg:py-2 md:w-[65%] lg:w-[65%] border rounded-lg pl-3 text-sm 
-                        ${error ? 'border-[1px] border-red-500 ' : 'border-[#737373] '} focus-within:shadow-lg 
+                        ${error ? 'border-[1px] border-red-500 ' : 'border-[#737373] '} focus-within:shadow-[0_0_20px_rgba(99,59,255,0.4)]
                         focus-within:border-[#633BFF] `}>
                             <input name="email" id="email" type="email" placeholder="e.g email@example.com" value={enteredEmail}
                                 onChange={(e) => setEnteredEmail(e.target.value)}
