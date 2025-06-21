@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const TwitterXIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const Twitter = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 16 16"
     fill="currentColor"
@@ -13,4 +13,4 @@ const TwitterXIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default TwitterXIcon;
+export default Twitter;

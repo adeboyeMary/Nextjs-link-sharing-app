@@ -19,7 +19,7 @@ const Header = () => {
                 <p className="lg:block md:block md:text-2xl lg:text-xl font-bold hidden md:pt-1.5 lg:pt ">devlinks</p>
             </div>
                     
-            <div className="flex flex-row gap-2 py-2 md:text-sm lg:text-sm ">
+            <div className="flex flex-row gap-2 py-2 md:text-sm lg:text-sm xl:text-xs ">
                 <Link href="/homePage" className={`px-6 py-2.5 transition-colors duration-200 md:gap-1
                 ${pathname === '/homePage' ? 'bg-[#EFEBFF] rounded-lg ' : 'bg-transparent'} md:flex md:flex-row `}>
                     {pathname === '/homePage' ? (
@@ -27,7 +27,7 @@ const Header = () => {
                     ) : (
                         <Image src={links} alt="links" width={22} height={22} />
                     )}
-                    <span className={`lg:block md:block hidden 
+                    <span className={`lg:block md:block hidden xl:mt-0.5
                     ${pathname === '/homePage' ? 'text-[#633BFF] ' : 'text-[#737373] '} `}>Links</span>
                 </Link>
 
@@ -39,15 +39,15 @@ const Header = () => {
                     ) : (
                         <Image src={profile} alt="profile" width={23} height={23} />
                     )}
-                    <span className={`hidden lg:block md:block 
+                    <span className={`hidden lg:block md:block xl:mt-0.5
                         ${pathname === '/profileDetailsPage' ? 'text-[#633BFF] ' : 'text-[#737373] '} `}>Profile Details</span>
                 </Link>
             </div>
 
-            <Link href="/previewPage" className=" border-[#633BFF] border-[1px] h-[47px] py-2 px-3 rounded-lg mt-1.5
-            md:px-7 md:h-[43px] md:mt-2 md:text-sm lg:text-sm">
+            <Link href="/previewPage" className=" border-[#633BFF] border-[1px] h-[43px] py-2 px-4 rounded-lg mt-1.5
+            md:px-7 md:h-[43px] md:mt-2 md:text-sm lg:text-sm xl:h-[39px] xl:text-xs ">
                 <Image src={eye} alt="eye" width={23} height={23} className="block md:hidden lg:hidden " />
-                <span className="hidden md:block">Preview</span>
+                <span className="hidden md:block xl:mt-0.5 ">Preview</span>
             </Link>            
         </div>
     )

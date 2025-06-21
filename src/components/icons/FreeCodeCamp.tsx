@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const FreeCodeCampIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const FreeCodeCamp = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 16 16"
     fill="currentColor"
@@ -20,4 +20,4 @@ const FreeCodeCampIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default FreeCodeCampIcon;
+export default FreeCodeCamp;

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
+const LinkedIn = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 16 16"
     fill="currentColor"
@@ -13,4 +13,4 @@ const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export default LinkedInIcon;
+export default LinkedIn;
