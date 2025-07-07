@@ -1,9 +1,21 @@
+import { useEffect, useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
 import benWright from "../asset/benWright.svg";
 import arrow from "../asset/arrow.svg";
+import { ProfileDetails } from "../store/types";
 
 const PreviewProfile = () => {
+    const [profileDetails, setProfileDetails] = useState<ProfileDetails | null>(null);
+
+    useEffect(() => {
+        const profileDetailsString = localStorage.getItem('profileDetails');
+        const profile = profileDetailsString ? JSON.parse(profileDetailsString) : null;
+        setProfileDetails(profile);
+    }, []);
+    
+
     return (
         <div>
             {/* header for tablet and laptop */}
@@ -30,26 +42,25 @@ const PreviewProfile = () => {
                             <Image src={benWright} alt="profile" width={120} height={120} />
                         </div>
 
-                        <div className="mt-5 ">
-                            <h1 className="text-3xl font-bold  ">Ben Wright</h1>
-                            <p className="text-[#737373] mt-3 ">ben@example.com</p>
-                        </div>
+                        {profileDetails && 
+                            <div className="mt-5 ">
+                                <h1 className="text-3xl font-bold  ">{profileDetails.enteredFirstName} {profileDetails.enteredLastName} </h1>
+                                <p className="text-[#737373] mt-3 ">{profileDetails.enteredEmail} </p>
+                            </div>
+                        }
 
                         <div className="flex flex-col gap-5 text-white text-center m-auto w-[65%] mt-11 lg:mt-12 ">
                             <div className="flex flex-row justify-between bg-black lg-[18%] py-3.5 rounded-lg px-4 ">
                                 <span>Github</span>
                                 <Image src={arrow} alt="icon" />
-                                
                             </div>
                             <div className="flex flex-row justify-between bg-[#EE3939] lg-[18%] py-3.5 rounded-lg px-4 ">
                                 <span>YouTube</span>
                                 <Image src={arrow} alt="icon" />
-                                
                             </div>
                             <div className="flex flex-row justify-between bg-[#2D68FF] lg-[38%] py-3.5 rounded-lg px-4 ">
                                 <span>LinkedIn</span>
                                 <Image src={arrow} alt="icon" />
-                                
                             </div>
                         </div>
                     </div>

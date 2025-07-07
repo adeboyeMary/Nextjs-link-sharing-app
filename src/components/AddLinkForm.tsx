@@ -7,16 +7,17 @@ import arrowDown from "../asset/arrowDown.svg";
 import arrowUp from "../asset/arrowUp.svg";
 import links from "../asset/links.svg";
 import { FormObject } from "@/store/types";
+import devTo from "../asset/devto.svg";
+
 
 type LinkFormProps = {
     link: FormObject,
     index: number, 
-    onChange: (index: number, field: keyof FormObject, value: string | Platform) => void, 
+    onChange: (index: number, field: keyof FormObject, value: string | Platform | null) => void, 
     platforms: Platform[], 
     isOpen: boolean, 
     toggleHandler: () => void,
     error: string,
-
 };
 
 
@@ -40,8 +41,15 @@ const AddLinkForm = ({link, index, onChange, platforms, isOpen, toggleHandler, e
                             border-[#D0D0D0] rounded-lg bg-white w-[100%] focus:border focus:border-[#633BFF] 
                             focus:shadow-[0_0_20px_rgba(99,59,255,0.3)] outline-none " >
                             <div className="gap-2 flex flex-row">
-                                <Image src={link.platform.icon} alt="logo" width={13} height={13} />
-                                <span>{link.platform.name || "Select platform"} </span>
+                                {link.platform ? (
+                                    <>
+                                        <link.platform.icon />
+                                        <span>{link.platform.name} </span>
+                                    </>
+                                ) : (
+                                    <span></span>
+                                )}
+                                
                             </div>
                             {isOpen ? (
                                 <Image src={arrowUp} alt="logo" width={13} height={13} className="pt-2 "/> 
@@ -50,16 +58,16 @@ const AddLinkForm = ({link, index, onChange, platforms, isOpen, toggleHandler, e
                             )}
                         </ListboxButton>
 
-                        <ListboxOptions className="rounded-lg w-[100%] bg-white mt-4 text-sm outline-none ">
+                        <ListboxOptions className="rounded-lg lg:w-[100%] bg-white mt-4 text-sm outline-none p-1
+                          h-[20rem] overflow-y-scroll mb-8 ">
                             {platforms.map((platform) => (
                                 <ListboxOption key={platform.name} value={platform} >
                                     {({active, selected}) => (
                                         <div className="flex flex-col gap-2 px-2 py-1 ">
                                             <li className={`flex flex-row list-none gap-1.5 ${active ? 
-                                            "text-[#633BFF] fill-[#633BFF] " : '' } `}>
-                                                <Image src={platform.icon} alt="logo" width={13} height={13}
-                                                className={`pt-[2px] hover:fill-[#633BFF] ${active ? 
-                                                "fill-[#633BFF] " : '' } `} />
+                                            "text-[#633BFF] " : '' } `}>
+                                                <platform.icon className={`pt-[2px] hover:fill-[#633BFF] ${active ? 
+                                                "fill-[#633BFF] " : '' } `}  />                                                
                                                 <span>{platform.name} </span>
                                             </li>
                                             <hr />

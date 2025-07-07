@@ -20,7 +20,11 @@ const ProfileDetailsPage = () => {
       isValid = false;    
     }
     if(!isValid) return; 
-    
+    const profileDetails = {
+        enteredEmail, enteredFirstName, enteredLastName
+    }
+    localStorage.setItem('profileDetails', JSON.stringify(profileDetails));
+    console.log('profileDetails', JSON.stringify(profileDetails));
     setEnteredEmail(''); 
     setEnteredFirstName(''); 
     setEnteredLastName('');

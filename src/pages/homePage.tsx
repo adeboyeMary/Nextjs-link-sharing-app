@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 import phone from "../asset/phone.svg";
@@ -12,8 +12,15 @@ export default function HomePage () {
     const [links, setLinks] = useState<FormObject[]>([]);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
-    
-    const formOnChangeHandler = (index: number, field: keyof FormObject, value: string | Platform ) => {
+    const [formData, setFormData] = useState<any>(null);
+
+    useEffect(() => {
+        const formDataString = localStorage.getItem('formData');
+        const data = formDataString ? JSON.parse(formDataString) : [];
+        setFormData(data);
+    }, []);
+
+    const formOnChangeHandler = (index: number, field: keyof FormObject, value: string | Platform | null ) => {
         setLinks((prevLinks) => {
             const updatedLinks = [...prevLinks];
             updatedLinks[index] = { ...updatedLinks[index], [field]: value};
@@ -24,7 +31,7 @@ export default function HomePage () {
         setLinks((prevLinks) => [
             ...prevLinks, 
             {
-                platform: {icon: "", name: ""},
+                platform: null,
                 url: ""
             }
         ]);
@@ -33,7 +40,7 @@ export default function HomePage () {
         setIsOpen(!isOpen);
     };
 
-    const onClickHandler = (e:  React.MouseEvent<HTMLButtonElement>) => {
+    const onClickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         let isValid = true;
         if(links[0].url.trim() === '') {
@@ -43,9 +50,11 @@ export default function HomePage () {
         if (!isValid) return;
         setLinks([]);
         setError('');
-        localStorage.setItem('formData', JSON.stringify(links));
-        const formData = localStorage.getItem('formData');
-        console.log(formData, '...............');
+        localStorage.setItem('formPlatform', JSON.stringify(links[0].platform?.name));
+        localStorage.setItem('formUrl', JSON.stringify(links[0].url));
+        const formData = localStorage.getItem('formPlatform');
+        const formUrl =localStorage.getItem('formUrl');
+        console.log(formData, formUrl, '...............');
     };
 
     return (
@@ -54,9 +63,17 @@ export default function HomePage () {
                 <div className="hidden lg:block lg:w-[40%] lg:py-[2.6rem] lg:bg-white rounded-lg ">
                     {/* <Image src={phone} alt="phone" width={500} height={300} className="w-[200px] m-auto " /> */}
                     <Image src={phone} alt="phone" width={280} height={200} className=" m-auto " />
+                    <ul>
+                    {/* {formData.map((data) => (
+                         <li key={data.name}>
+                         <span>{data.name}</span> 
+                         <span>{data.url} </span>
+                         </li>
+                    ))} */}
+                    </ul>
                 </div>
 
-                <div className="w-[100%] lg:w-[60%] lg:h-[45 lg:pt-[1.5rem]  lg:bg-white rounded-lg flex-col p-6 ">
+                <div className="w-[100%] lg:w-[60%] lg:pt-[1.5rem]  lg:bg-white rounded-lg flex-col p-6 ">
                     <div className="w-[94%] m-auto ">
                         <h1 className="text-2xl font-bold mb-3 ">Customize your links</h1>
                         <p className="text-base text-[#737373]">Add/edit/remove links below and then share all your profiles with the world!</p>
