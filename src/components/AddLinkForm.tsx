@@ -59,7 +59,7 @@ const AddLinkForm = ({link, index, onChange, platforms, isOpen, toggleHandler, e
                         </ListboxButton>
 
                         <ListboxOptions className="rounded-lg lg:w-[100%] bg-white mt-4 text-sm outline-none p-1
-                          h-[20rem] overflow-y-scroll mb-8 ">
+                          h-[20rem] no-scrollbar overflow-y-scroll mb-8 ">
                             {platforms.map((platform) => (
                                 <ListboxOption key={platform.name} value={platform} >
                                     {({active, selected}) => (

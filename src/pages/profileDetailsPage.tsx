@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Image from "next/image";
 import upload from "../asset/upload.svg";
 import phone from "../asset/phone.svg";
+import { FormObject } from "@/store/types";
+import { platforms } from "@/constant/Platforms";
+import arrow from "../asset/arrow.svg";
 
 
 const ProfileDetailsPage = () => {
@@ -10,6 +13,22 @@ const ProfileDetailsPage = () => {
     const [enteredFirstName, setEnteredFirstName] = useState<string>('');
     const [enteredLastName, setEnteredLastName] = useState<string>('');
     const [error, setError] = useState<string>('');
+    const [formData, setFormData] = useState<FormObject[]>([]);
+
+    useEffect(() => {
+        const formDataString = localStorage.getItem('formData');
+        console.log(formData, '......updated data001.........');
+        const data = formDataString ? JSON.parse(formDataString) : [];
+        const rehydrateIcon = data.map((item:FormObject) => {
+            const matchPlatformWithIcon = platforms.find(p => p.id === item.platform?.id);
+            return {
+                ...item,
+                platform: matchPlatformWithIcon ? {icon: matchPlatformWithIcon.icon, ...item.platform, bg: matchPlatformWithIcon.bg } : item.platform
+            };
+        })
+        setFormData(rehydrateIcon);
+        console.log(rehydrateIcon, 'rehydrated.....');
+    }, []);
 
   const formSubmitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,6 +47,7 @@ const ProfileDetailsPage = () => {
     setEnteredEmail(''); 
     setEnteredFirstName(''); 
     setEnteredLastName('');
+    window.location.href = "/previewPage";
   };
 
 
@@ -35,6 +55,21 @@ const ProfileDetailsPage = () => {
         <div className="flex flex-row bg-white lg:bg-transparent w-[92%] m-auto rounded-lg text-[#333333] pb-0.5 lg:gap-4 ">
             <div className="hidden lg:block lg:w-[40%] lg:pt-20 lg:pb-[2.6rem] lg:bg-white rounded-lg ">
                 <Image src={phone} alt="phone" width={280} height={200} className=" m-auto " />
+                <ul className="flex flex-col relative top-[-20rem] z-10 lg:w-[57%] xl:w-[46%] gap-[1.2rem] m-auto text-white
+                     h-[294px] overflow-y-scroll no-scrollbar xl:no-scrollbar xl:gap-[0.8rem] ">
+                        {formData.map((data, index) => (
+                            data.platform && data.platform.icon ? (
+                                <li key={data.platform.id ?? index} className={`flex items-center justify-between py-2.5 
+                                px-4 rounded-lg `} style={{ backgroundColor: data.platform.bg }}>
+                                    <div className="flex flex-row gap-1.5 ">
+                                        <data.platform.icon className="w-5 h-5 fill-white " />
+                                        <span>{data.platform.name}</span>
+                                    </div>
+                                  <Image src={arrow} alt="icon" />
+                                </li>
+                              ) : null                          
+                        ))}
+                    </ul>
             </div>
                 
             <div className="bg-white w-[100%] md:w-[100%] lg:w-[60%] rounded-lg">
@@ -46,10 +81,10 @@ const ProfileDetailsPage = () => {
             py-6 pl-4 text-sm mb-5 md:flex-row md:justify-evenly md:gap-4
             lg:flex-row lg:justify-evenly lg:gap-4 ">
                 <p className="md:w-[30%] lg:w-[30%] md:m-auto lg:m-auto  ">Profile picture</p>
-                <div className="bg-[#EFEBFF] w-[64%] md:w-[30%] lg:w-[30%] p-16 rounded-lg flex flex-col gap-2 mt-4 mb-6">
-                    <Image src={upload} alt='uploadImage' width={30} height={30} className="m-auto" />
-                    <p className="font-bold text-[#633BFF] text-xs text-center w-24 ml-[-1rem] md:ml-[-1.5rem] 
-                    lg:ml-[-2.2rem] xl:ml-[-1.5rem] ">+ Upload Image</p>
+                <div className="bg-[#EFEBFF] w-[64%] foldOnly:w-[72%] md:w-[30%] lg:w-[30%] p-16 rounded-lg flex flex-col gap-2 mt-4 mb-6">
+                    <Image src={upload} alt='uploadImage' className="m-auto w-[42%] foldOnly:w-[20rem] " />
+                    <p className="font-bold text-[#633BFF] text-xs text-center w-24 ml-[-1rem] foldOnly:ml-[-2.5rem] md:ml-[-1.5rem] 
+                    lg:ml-[-2.2rem] xl:ml-[-1.5rem]  ">+ Upload Image</p>
                 </div>
                 <p className="pr-2 lg:pr-0 md:w-[20rm] md:m-auto lg:w-[20rm] lg:m-auto  ">Image must be below 1024x1024px. Use PNG or JPG format.</p>
             </div>

@@ -4,10 +4,25 @@ import Image from "next/image";
 import Link from "next/link";
 import benWright from "../asset/benWright.svg";
 import arrow from "../asset/arrow.svg";
-import { ProfileDetails } from "../store/types";
+import { platforms } from "@/constant/Platforms";
+import { ProfileDetails, FormObject } from "../store/types";
 
 const PreviewProfile = () => {
     const [profileDetails, setProfileDetails] = useState<ProfileDetails | null>(null);
+    const [formData, setFormData] = useState<FormObject[]>([]);
+
+    useEffect(() => {
+        const formDataString = localStorage.getItem('formData');
+        const data = formDataString ? JSON.parse(formDataString) : [];
+        const rehydrateIcon = data.map((item:FormObject) => {
+            const matchPlatformWithIcon = platforms.find(p => p.id === item.platform?.id);
+            return {
+                ...item,
+                platform: matchPlatformWithIcon ? {icon: matchPlatformWithIcon.icon, ...item.platform, bg: matchPlatformWithIcon.bg} : item.platform
+            };
+        })
+        setFormData(rehydrateIcon);
+    }, []);
 
     useEffect(() => {
         const profileDetailsString = localStorage.getItem('profileDetails');
@@ -49,20 +64,21 @@ const PreviewProfile = () => {
                             </div>
                         }
 
-                        <div className="flex flex-col gap-5 text-white text-center m-auto w-[65%] mt-11 lg:mt-12 ">
-                            <div className="flex flex-row justify-between bg-black lg-[18%] py-3.5 rounded-lg px-4 ">
-                                <span>Github</span>
-                                <Image src={arrow} alt="icon" />
-                            </div>
-                            <div className="flex flex-row justify-between bg-[#EE3939] lg-[18%] py-3.5 rounded-lg px-4 ">
-                                <span>YouTube</span>
-                                <Image src={arrow} alt="icon" />
-                            </div>
-                            <div className="flex flex-row justify-between bg-[#2D68FF] lg-[38%] py-3.5 rounded-lg px-4 ">
-                                <span>LinkedIn</span>
-                                <Image src={arrow} alt="icon" />
-                            </div>
-                        </div>
+                        <ul className="flex flex-col relative z-10 w-[70%] md:w-[65%] lg:w-[57%] xl:w-[45%] 
+                        gap-[1.2rem] m-auto text-white mt-11 lg:mt-12 h-[360px] overflow-y-scroll no-scrollbar ">
+                        {formData.map((data, index) => (
+                            data.platform && data.platform.icon ? (
+                                <li key={data.platform.id ?? index} className={`flex items-center justify-between  py-2.5 
+                                px-4 rounded-lg ${data.platform.bg} `} style={{ backgroundColor: data.platform.bg }}>
+                                    <div className="flex flex-row gap-1.5 ">
+                                        <data.platform.icon className="w-5 h-5 fill-white " />
+                                        <span>{data.platform.name }</span>
+                                    </div>
+                                  <Image src={arrow} alt="icon" />
+                                </li>
+                              ) : null                          
+                        ))}
+                    </ul>
                     </div>
                 </div>
                 

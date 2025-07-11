@@ -6,18 +6,30 @@ import getStarted from "../asset/getStarted.svg";
 import Button from "@/components/button";
 import { platforms } from "@/constant/Platforms";
 import { Platform, FormObject } from "@/store/types";
+import arrow from "../asset/arrow.svg";
 import AddLinkForm from "@/components/AddLinkForm";
 
 export default function HomePage () {
     const [links, setLinks] = useState<FormObject[]>([]);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
-    const [formData, setFormData] = useState<any>(null);
+    const [formData, setFormData] = useState<FormObject[]>([]);
 
     useEffect(() => {
+        // localStorage.clear();
         const formDataString = localStorage.getItem('formData');
+        console.log(formData, '......updated data001.........');
         const data = formDataString ? JSON.parse(formDataString) : [];
-        setFormData(data);
+        const rehydrateIcon = data.map((item:FormObject) => {
+            const matchPlatformWithIcon = platforms.find(p => p.id === item.platform?.id);
+            return {
+                ...item,
+                platform: matchPlatformWithIcon ? {icon: matchPlatformWithIcon.icon, ...item.platform, bg: matchPlatformWithIcon.bg } : item.platform
+            };
+        })
+        setFormData(rehydrateIcon);
+        console.log(rehydrateIcon, 'rehydrated.....');
+
     }, []);
 
     const formOnChangeHandler = (index: number, field: keyof FormObject, value: string | Platform | null ) => {
@@ -48,28 +60,40 @@ export default function HomePage () {
             isValid = false;
         }
         if (!isValid) return;
+        const existingFormDataString = localStorage.getItem('formData');
+        const existingFormData = existingFormDataString ? JSON.parse(existingFormDataString) : [];
+        const updatedData = [...existingFormData, ...links]
+        setFormData(updatedData);
+        console.log(updatedData, 'rehydrated');
         setLinks([]);
         setError('');
-        localStorage.setItem('formPlatform', JSON.stringify(links[0].platform?.name));
-        localStorage.setItem('formUrl', JSON.stringify(links[0].url));
-        const formData = localStorage.getItem('formPlatform');
-        const formUrl =localStorage.getItem('formUrl');
-        console.log(formData, formUrl, '...............');
+        localStorage.setItem('formData', JSON.stringify(updatedData));
+        const formData = localStorage.getItem('formData');
+        console.log(formData, '......updated data.........');
     };
 
     return (
         <div className="flex flex-col text-sm gap-4 text-[#333333]  ">
             <div className="w-[92%] lg:flex lg:flex-row lg:w-[94%] m-auto lg:gap-4 bg-white rounded-lg pb-8 lg:pb-0 lg:bg-transparent ">
-                <div className="hidden lg:block lg:w-[40%] lg:py-[2.6rem] lg:bg-white rounded-lg ">
+                <div className="hidden lg:block lg:w-[40%] lg:py-[2.6rem] lg:bg-white rounded-lg 
+                ">
                     {/* <Image src={phone} alt="phone" width={500} height={300} className="w-[200px] m-auto " /> */}
                     <Image src={phone} alt="phone" width={280} height={200} className=" m-auto " />
-                    <ul>
-                    {/* {formData.map((data) => (
-                         <li key={data.name}>
-                         <span>{data.name}</span> 
-                         <span>{data.url} </span>
-                         </li>
-                    ))} */}
+                    <ul className="flex flex-col relative top-[-20rem] z-10 lg:w-[57%] xl:w-[45%] gap-[1.2rem] m-auto text-white
+                     h-[294px] overflow-y-scroll no-scrollbar xl:no-scrollbar xl:gap-[1rem] ">
+                        {formData.map((data, index) => (
+                            data.platform && data.platform.icon ? (
+                                <li key={data.platform.id ?? index} className={`flex items-center justify-between py-2.5 
+                                px-4 rounded-lg `} style={{ backgroundColor: data.platform.bg }}>
+                                    {/* ${data.platform.bg} */}
+                                    <div className="flex flex-row gap-1.5 ">
+                                        <data.platform.icon className="w-5 h-5 fill-white " />
+                                        <span>{data.platform.name}</span>
+                                    </div>
+                                  <Image src={arrow} alt="icon" />
+                                </li>
+                              ) : null                          
+                        ))}
                     </ul>
                 </div>
 

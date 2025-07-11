@@ -1,5 +1,7 @@
 export type Platform = {
     // icon: string,
+    id: string,
+    bg: string,
     icon: React.FC<React.SVGProps<SVGSVGElement>>,
     name: string
   }
@@ -14,3 +16,8 @@ export type Platform = {
     enteredLastName: string,
     enteredEmail: string
   }
+
+  // export type FormDataType = {
+  //   name: string;
+  //   url: string;
+  // };
